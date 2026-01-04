@@ -1,5 +1,6 @@
 import { View, Image } from "@tarojs/components";
 import { GachaType, GachaTypeKey, roleList } from "../../constants";
+
 import styles from "./index.module.less";
 
 interface GoldTotalProps {
@@ -68,21 +69,24 @@ const GoldTotal = (props: GoldTotalProps) => {
         {data.map((item, index) => {
           const role = roleList.find((r) => r.name === item.name);
           return (
-            <View key={index} className={styles.listItem}>
-              {role ? (
+            <View
+              key={index}
+              className={styles.listItem}
+              style={{
+                background: role?.isNormal
+                  ? "linear-gradient(135deg, #ffffff 0%, #ffeef8 100%)"
+                  : "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
+              }}
+            >
+              {role && !role?.englishName?.includes("NO-PIC-") ? (
                 <Image
                   className={styles.roleImage}
-                  src={`https://t1.xianx.com.cn/xstatic/img/c/s/${role.englishName}.jpg`}
+                  src={`https://ys.appfeng.com/ui/avatar/UI_AvatarIcon_${role.englishName}.png`}
                   mode="aspectFit"
                 />
               ) : null}
               <View className={styles.itemName}>{item.name}</View>
-              <View
-                className={styles.itemCount}
-                style={{ color: role?.isNormal ? "#ff4d4f" : "#000" }}
-              >
-                {item.count}
-              </View>
+              <View className={styles.itemCount}>{item.count}</View>
             </View>
           );
         })}

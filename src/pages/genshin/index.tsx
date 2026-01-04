@@ -8,12 +8,6 @@ import { GachaType, GachaTypeKey } from "./constants";
 import styles from "./index.module.less";
 
 export default function Genshin() {
-  const initGachaParams = {
-    endId: "0",
-    currentPage: 1,
-    gachaType: GachaTypeKey.ROLE,
-  };
-
   const [gachaParams, setGachaParams] = useState<ObjectType | undefined>();
   const [tempData, setTempData] = useState<ObjectType[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -125,15 +119,6 @@ export default function Genshin() {
     }
   };
 
-  const getFilteredData = (type: GachaTypeKey) => {
-    return allGoldData?.filter((j) => {
-      if (GachaType[type].label === "角色") {
-        return ["301", "400"].includes(j.gacha_type);
-      }
-      return j.gacha_type === GachaType[type].code;
-    });
-  };
-
   useEffect(() => {
     if (gachaParams) {
       const timer = setTimeout(fetchData, 500);
@@ -147,6 +132,14 @@ export default function Genshin() {
       {allGoldData.length ? (
         <View className={styles.genshinBody}>
           {Object.keys(GachaType).map((i) => {
+            const getFilteredData = (type: GachaTypeKey) => {
+              return allGoldData?.filter((j) => {
+                if (GachaType[type].label === "角色") {
+                  return ["301", "400"].includes(j.gacha_type);
+                }
+                return j.gacha_type === GachaType[type].code;
+              });
+            };
             const data = getFilteredData(i as GachaTypeKey);
             return data?.length ? (
               <GoldTotal key={i} type={i as GachaTypeKey} data={data} />
@@ -173,7 +166,11 @@ export default function Genshin() {
             className={styles.genshinButton}
             onClick={() => {
               setAllGoldData([]);
-              setGachaParams(initGachaParams);
+              setGachaParams({
+                endId: "0",
+                currentPage: 1,
+                gachaType: GachaTypeKey.ROLE,
+              });
             }}
           >
             开始获取
@@ -184,17 +181,24 @@ export default function Genshin() {
             onClick={() => {
               Taro.showModal({
                 title: "如何获取导出链接？",
-                content: `
-1、打开游戏抽卡记录页面，最好多翻几页
-2、打开电脑终端 windows powershell
-3、输入 iex(irm 'https://img.lelaer.com/cn.ps1')
-4、命令运行结束时链接已经自动复制到剪贴板，直接使用即可
-`,
+                content: `打开原神游戏内抽卡记录页面并翻几页, 打开电脑终端 windows powershell, 输入 iex(irm 'https://img.lelaer.com/cn.ps1'), 命令运行结束时链接已经自动复制到剪贴板，直接使用即可`,
                 showCancel: false,
+                confirmText: "复制命令",
+                success: () => {
+                  Taro.setClipboardData({
+                    data: `iex(irm 'https://img.lelaer.com/cn.ps1')`,
+                    success: () => {
+                      Taro.showToast({
+                        title: "链接已复制",
+                        icon: "success",
+                      });
+                    },
+                  });
+                },
               });
             }}
           >
-            如何获得
+            如何获得?
           </Button>
         )}
       </View>
