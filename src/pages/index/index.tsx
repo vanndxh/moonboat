@@ -1,58 +1,29 @@
-import { View, Text } from "@tarojs/components";
+import { View, Text, Image } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 
 import styles from "./index.module.less";
 
 export default function Index() {
-  const handleGenshinRecord = () => {
-    Taro.navigateTo({
-      url: "/pages/genshin/index",
-    });
-  };
-
-  const handleGithub = () => {
-    Taro.setClipboardData({
-      data: "https://github.com/vanndxh",
-      success: () => {
-        Taro.showToast({
-          title: "链接已复制",
-          icon: "success",
-        });
-      },
-    });
-  };
-
-  const handleMail = () => {
-    Taro.setClipboardData({
-      data: "1025196468@qq.com",
-      success: () => {
-        Taro.showToast({
-          title: "邮箱已复制",
-          icon: "success",
-        });
-      },
-    });
-  };
-
   return (
-    <View className={styles.index}>
-      <View className={styles.card} onClick={handleGenshinRecord}>
-        原神抽卡记录导出
+    <View className={styles.container}>
+      <View
+        className={styles.card}
+        onClick={() => {
+          Taro.navigateTo({
+            url: "/pages/genshin/index",
+          });
+        }}
+      >
+        <Image
+          src="https://ts1.tc.mm.bing.net/th/id/ODF.9_NtgMCMkLHY0oSbrk3suQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+          className={styles.cardIcon}
+        />
+        <Text>原神抽卡记录导出</Text>
       </View>
-      <View className={styles.cardRow}>
-        <View
-          className={styles.smallCard + " " + styles.githubCard}
-          onClick={handleGithub}
-        >
-          GitHub
-        </View>
-        <View
-          className={styles.smallCard + " " + styles.mailCard}
-          onClick={handleMail}
-        >
-          QQ Mail
-          <Text className={styles.mailAddress}>1025196468@qq.com</Text>
-        </View>
+
+      <View className={styles.footer}>
+        <View className={styles.divider} />
+        <Text className={styles.contactText}>联系作者： 1025196468@qq.com</Text>
       </View>
     </View>
   );

@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "xhw-weapp",
+  "projectname": "moonboat",
   "description": "",
   "appid": "wx3a190daf68ef9ed5",
   "setting": {
@@ -17,7 +17,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.7.11",
+  "libVersion": "3.13.1",
   "srcMiniprogramRoot": "dist/",
   "packOptions": {
     "ignore": [],
