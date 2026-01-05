@@ -29,7 +29,7 @@ export default function Index() {
           });
         }}
       >
-        <Text>随机海龟汤</Text>
+        <Text>海龟汤</Text>
       </View>
 
       <View className={styles.footer}>
