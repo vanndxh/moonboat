@@ -1,0 +1,96 @@
+.turtleSoupContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+
+  .contentArea {
+    height: calc(100vh - 200px);
+    font-size: 28px;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: auto;
+    padding-right: 18px;
+
+    .scenarioBox {
+      background: #f6fafd;
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      padding: 16px 12px 8px 12px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 8px;
+
+      .scenarioTitle {
+        font-size: 32px;
+        font-weight: bold;
+        color: #3a7ca5;
+        margin-bottom: 6px;
+      }
+    }
+
+    .solutionBox {
+      background: #f9f6fd;
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      padding: 16px 12px 8px 12px;
+      display: flex;
+      flex-direction: column;
+
+      .solutionTitle {
+        font-size: 32px;
+        font-weight: bold;
+        color: #b66eb8;
+        margin-bottom: 6px;
+      }
+    }
+  }
+
+  .footerButtonBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    height: 68px;
+    z-index: 10;
+
+    .btnChange {
+      width: 100%;
+      max-width: 420px;
+      height: 68px;
+      margin: 0 auto;
+      border-radius: 24px;
+      background: linear-gradient(
+        135deg,
+        rgba(227, 242, 253, 0.65) 0%,
+        rgba(243, 229, 245, 0.65) 50%,
+        rgba(252, 228, 236, 0.65) 100%
+      );
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.09);
+      color: #222;
+      font-size: 32px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      outline: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.09);
+      &::after,
+      &::before {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+      transition: all 0.3s;
+    }
+    .btnChange:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

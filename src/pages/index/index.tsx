@@ -21,6 +21,17 @@ export default function Index() {
         <Text>原神抽卡记录导出</Text>
       </View>
 
+      <View
+        className={styles.card}
+        onClick={() => {
+          Taro.navigateTo({
+            url: "/pages/turtleSoup/index",
+          });
+        }}
+      >
+        <Text>随机海龟汤</Text>
+      </View>
+
       <View className={styles.footer}>
         <View className={styles.divider} />
         <Text className={styles.contactText}>联系作者： 1025196468@qq.com</Text>
