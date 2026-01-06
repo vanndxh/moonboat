@@ -1,5 +1,10 @@
 export default defineAppConfig({
-  pages: ["pages/index/index", "pages/genshin/index", "pages/turtleSoup/index"],
+  pages: [
+    "pages/Index/index",
+    "pages/Genshin/index",
+    "pages/TurtleSoup/index",
+    "pages/Wish/index",
+  ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",

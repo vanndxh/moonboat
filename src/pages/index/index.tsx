@@ -4,33 +4,38 @@ import Taro from "@tarojs/taro";
 import styles from "./index.module.less";
 
 export default function Index() {
+  const cards = [
+    {
+      title: "原神抽卡记录导出",
+      url: "/pages/Genshin/index",
+      iconUrl:
+        "https://ts1.tc.mm.bing.net/th/id/ODF.9_NtgMCMkLHY0oSbrk3suQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2",
+    },
+    {
+      title: "米池模拟器",
+      url: "/pages/Wish/index",
+    },
+    {
+      title: "海龟汤",
+      url: "/pages/TurtleSoup/index",
+    },
+  ];
+
   return (
     <View className={styles.container}>
-      <View
-        className={styles.card}
-        onClick={() => {
-          Taro.navigateTo({
-            url: "/pages/genshin/index",
-          });
-        }}
-      >
-        <Image
-          src="https://ts1.tc.mm.bing.net/th/id/ODF.9_NtgMCMkLHY0oSbrk3suQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
-          className={styles.cardIcon}
-        />
-        <Text>原神抽卡记录导出</Text>
-      </View>
-
-      <View
-        className={styles.card}
-        onClick={() => {
-          Taro.navigateTo({
-            url: "/pages/turtleSoup/index",
-          });
-        }}
-      >
-        <Text>海龟汤</Text>
-      </View>
+      {cards.map((i) => (
+        <View
+          className={styles.card}
+          onClick={() => {
+            Taro.navigateTo({
+              url: i.url,
+            });
+          }}
+        >
+          {i?.iconUrl && <Image src={i?.iconUrl} className={styles.cardIcon} />}
+          <Text>{i.title}</Text>
+        </View>
+      ))}
 
       <View className={styles.footer}>
         <View className={styles.divider} />
