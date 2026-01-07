@@ -12,8 +12,6 @@ export default function Pokemon() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<ObjectType[]>([]);
 
-  console.log("ans", ans);
-
   useEffect(() => {
     Taro.request({
       url: "https://xiaoce.fun/api/v0/quiz/daily/pokemon/getList",
