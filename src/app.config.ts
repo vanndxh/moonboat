@@ -4,6 +4,7 @@ export default defineAppConfig({
     "pages/Genshin/index",
     "pages/TurtleSoup/index",
     "pages/Wish/index",
+    "pages/Pokemon/index",
   ],
   window: {
     backgroundTextStyle: "light",

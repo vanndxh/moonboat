@@ -1,4 +1,4 @@
 export default {
-  navigationBarTitleText: "原神抽卡记录",
+  navigationBarTitleText: "猜宝可梦",
   enableShareAppMessage: true,
 };

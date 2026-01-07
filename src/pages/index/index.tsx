@@ -6,7 +6,7 @@ import styles from "./index.module.less";
 export default function Index() {
   const cards = [
     {
-      title: "原神抽卡记录导出",
+      title: "原神抽卡记录",
       url: "/pages/Genshin/index",
       iconUrl:
         "https://ts1.tc.mm.bing.net/th/id/ODF.9_NtgMCMkLHY0oSbrk3suQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2",
@@ -16,6 +16,12 @@ export default function Index() {
       url: "/pages/Wish/index",
     },
     {
+      title: "猜宝可梦",
+      url: "/pages/Pokemon/index",
+      iconUrl:
+        "https://ts4.tc.mm.bing.net/th/id/ODF.F0DFeprkTu3W_IwphaBusw?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2",
+    },
+    {
       title: "海龟汤",
       url: "/pages/TurtleSoup/index",
     },
@@ -23,19 +29,23 @@ export default function Index() {
 
   return (
     <View className={styles.container}>
-      {cards.map((i) => (
-        <View
-          className={styles.card}
-          onClick={() => {
-            Taro.navigateTo({
-              url: i.url,
-            });
-          }}
-        >
-          {i?.iconUrl && <Image src={i?.iconUrl} className={styles.cardIcon} />}
-          <Text>{i.title}</Text>
-        </View>
-      ))}
+      <View className={styles.cardList}>
+        {cards.map((i) => (
+          <View
+            className={styles.card}
+            onClick={() => {
+              Taro.navigateTo({
+                url: i.url,
+              });
+            }}
+          >
+            {i?.iconUrl && (
+              <Image src={i?.iconUrl} className={styles.cardIcon} />
+            )}
+            <Text>{i.title}</Text>
+          </View>
+        ))}
+      </View>
 
       <View className={styles.footer}>
         <View className={styles.divider} />
